@@ -1,0 +1,48 @@
+apply plugin: 'com.android.application'
+// Apply the Crashlytics Gradle plugin
+apply plugin: 'com.google.firebase.crashlytics'
+// Add the following line:
+apply plugin: 'com.google.gms.google-services'  // Google Services plugin
+
+dependencies {
+  api project(':libs:MobileSync') // From node_modules
+    // Recommended: Add the Firebase SDK for Google Analytics.
+    implementation 'com.google.firebase:firebase-analytics:17.5.0'
+
+    // Add the Firebase Crashlytics SDK.
+    implementation 'com.google.firebase:firebase-crashlytics:17.2.1'
+}
+
+android {
+    compileSdkVersion 29
+
+    defaultConfig {
+        targetSdkVersion 29
+        minSdkVersion 23
+    }
+  
+  buildTypes {
+      debug {
+         testCoverageEnabled = true
+      }
+   }
+
+  sourceSets {
+
+    main {
+      manifest.srcFile 'AndroidManifest.xml'
+      java.srcDirs = ['src']
+      resources.srcDirs = ['src']
+      aidl.srcDirs = ['src']
+      renderscript.srcDirs = ['src']
+      res.srcDirs = ['res']
+      assets.srcDirs = ['assets']
+    }
+  }
+  packagingOptions {
+    exclude 'META-INF/LICENSE'
+    exclude 'META-INF/LICENSE.txt'
+    exclude 'META-INF/DEPENDENCIES'
+    exclude 'META-INF/NOTICE'
+  }
+}

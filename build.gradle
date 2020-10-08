@@ -1,0 +1,23 @@
+buildscript {
+  repositories {
+    google()
+    jcenter()
+  }
+
+  dependencies {
+    classpath 'com.android.tools.build:gradle:4.0.1'
+    // Check that you have the Google Services Gradle plugin v4.3.2 or later
+    // (if not, add it).
+    classpath 'com.google.gms:google-services:4.3.3'
+
+    // Add the Crashlytics Gradle plugin.
+    classpath 'com.google.firebase:firebase-crashlytics-gradle:2.3.0'
+  }
+}
+
+allprojects {
+  repositories {
+    google()
+    jcenter()
+  }
+}
